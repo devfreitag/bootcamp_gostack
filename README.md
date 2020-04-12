@@ -1,0 +1,1 @@
+Repositório criado com o intuito de armazenar informações, códigos e desafios referentes ao bootcamp GoStack promovido pela Rocketseat.

@@ -1,0 +1,3 @@
+[submodule "challenges/desafio_conceitos_nodejs"]
+	path = challenges/desafio_conceitos_nodejs
+	url = https://github.com/alexxfreitag/desafio_conceitos_nodejs

@@ -1,3 +1,6 @@
 [submodule "challenges/desafio_conceitos_nodejs"]
 	path = challenges/desafio_conceitos_nodejs
 	url = https://github.com/alexxfreitag/desafio_conceitos_nodejs
+[submodule "challenges/desafio_conceitos_reactjs"]
+	path = challenges/desafio_conceitos_reactjs
+	url = https://github.com/alexxfreitag/desafio_conceitos_reactjs

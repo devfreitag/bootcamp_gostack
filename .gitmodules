@@ -4,3 +4,6 @@
 [submodule "challenges/desafio_conceitos_reactjs"]
 	path = challenges/desafio_conceitos_reactjs
 	url = https://github.com/alexxfreitag/desafio_conceitos_reactjs
+[submodule "challenges/desafio_conceitos_react_native"]
+	path = challenges/desafio_conceitos_react_native
+	url = https://github.com/alexxfreitag/desafio_conceitos_react_native

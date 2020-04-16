@@ -1,9 +1,9 @@
-[submodule "challenges/desafio_conceitos_nodejs"]
-	path = challenges/desafio_conceitos_nodejs
+[submodule "levelOne/challenges/desafio_conceitos_nodejs"]
+	path = levelOne/challenges/desafio_conceitos_nodejs
 	url = https://github.com/alexxfreitag/desafio_conceitos_nodejs
-[submodule "challenges/desafio_conceitos_reactjs"]
-	path = challenges/desafio_conceitos_reactjs
+[submodule "levelOne/challenges/desafio_conceitos_reactjs"]
+	path = levelOne/challenges/desafio_conceitos_reactjs
 	url = https://github.com/alexxfreitag/desafio_conceitos_reactjs
-[submodule "challenges/desafio_conceitos_react_native"]
-	path = challenges/desafio_conceitos_react_native
+[submodule "levelOne/challenges/desafio_conceitos_react_native"]
+	path = levelOne/challenges/desafio_conceitos_react_native
 	url = https://github.com/alexxfreitag/desafio_conceitos_react_native

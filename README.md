@@ -2,7 +2,7 @@
   <img alt="GoStack" width="250px" src=".github/images/gostack_logo.png"  />
 </div>
 
-Repositório criado com o intuito de armazenar informações, códigos e desafios referentes ao bootcamp GoStack promovido pela Rocketseat.
+### Repositório criado com o intuito de armazenar informações, códigos e desafios referentes ao bootcamp GoStack promovido pela Rocketseat.
 
 # :dart: Nível 01
  - [Backend com NodeJS](https://github.com/alexxfreitag/bootcamp_gostack/tree/master/levelOne/backendWithNodeJS)
@@ -12,7 +12,7 @@ Repositório criado com o intuito de armazenar informações, códigos e desafio
  - [Challenges](https://github.com/alexxfreitag/bootcamp_gostack/tree/master/levelOne/challenges)
 
 # :dart: Nível 02
- - [Primeiro projecto com NodeJS](https://github.com/alexxfreitag/bootcamp_gostack/tree/master/levelTwo/firstProjectWithNodeJS)
+ - [Primeiro projeto com NodeJS](https://github.com/alexxfreitag/bootcamp_gostack/tree/master/levelTwo/firstProjectWithNodeJS)
  - [Challenges](https://github.com/alexxfreitag/bootcamp_gostack/tree/master/levelTwo/challenges)
 
 ---

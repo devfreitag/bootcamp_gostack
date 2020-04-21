@@ -7,3 +7,6 @@
 [submodule "levelOne/challenges/desafio_conceitos_react_native"]
 	path = levelOne/challenges/desafio_conceitos_react_native
 	url = https://github.com/alexxfreitag/desafio_conceitos_react_native
+[submodule "levelTwo/challenges/desafio_fundamentos_node"]
+	path = levelTwo/challenges/desafio_fundamentos_node
+	url = https://github.com/alexxfreitag/desafio_fundamentos_node

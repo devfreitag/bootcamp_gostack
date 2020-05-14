@@ -10,3 +10,6 @@
 [submodule "levelTwo/challenges/desafio_fundamentos_node"]
 	path = levelTwo/challenges/desafio_fundamentos_node
 	url = https://github.com/alexxfreitag/desafio_fundamentos_node
+[submodule "levelTwo/challenges/desafio_database_upload"]
+	path = levelTwo/challenges/desafio_database_upload
+	url = https://github.com/alexxfreitag/desafio_database_upload

@@ -12,7 +12,7 @@
  - [Challenges](https://github.com/alexxfreitag/bootcamp_gostack/tree/master/levelOne/challenges)
 
 # :dart: Nível 02
- - [Primeiro projeto com NodeJS](https://github.com/alexxfreitag/bootcamp_gostack/tree/master/levelTwo/firstProjectWithNodeJS)
+ - [Primeiro projeto com NodeJS/ Iniciando back-end do app](https://github.com/alexxfreitag/bootcamp_gostack/tree/master/levelTwo/firstProjectWithNodeJS)
  - [Challenges](https://github.com/alexxfreitag/bootcamp_gostack/tree/master/levelTwo/challenges)
 
 ---

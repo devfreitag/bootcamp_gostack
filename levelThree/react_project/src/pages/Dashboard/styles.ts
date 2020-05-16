@@ -3,10 +3,25 @@ import { shade } from 'polished';
 
 export const Title = styled.h1`
   font-size: 48px;
-  color: #3a3a3a;
+  color: #be95c4;
   max-width: 450px;
   line-height: 56px;
   margin-top: 80px;
+`;
+
+export const Header = styled.header`
+  max-width: 700px;
+  display: flex;
+
+  img {
+    justify-content: flex-start;
+  }
+
+  a {
+    margin-left: auto;
+    color: #e0b1cb;
+    text-decoration: none;
+  }
 `;
 
 export const Form = styled.form`
@@ -31,7 +46,7 @@ export const Form = styled.form`
   button {
     width: 210px;
     height: 70px;
-    background: #04d361;
+    background: #5e548e;
     border-radius: 0px 5px 5px 0;
     border: 0;
     color: #fff;
@@ -39,7 +54,7 @@ export const Form = styled.form`
     transition: background-color 0.2s;
 
     &:hover {
-      background: ${shade(0.2, '#04d361')};
+      background: ${shade(0.2, '#5E548E')};
     }
   }
 `;
@@ -75,7 +90,8 @@ export const Repositories = styled.div`
     }
 
     div {
-      margin-left: 16px;
+      margin: 0 16px;
+      flex: 1;
 
       strong {
         font-size: 20px;
@@ -91,7 +107,7 @@ export const Repositories = styled.div`
 
     svg {
       margin-left: auto;
-      color: #cbcbd6;
+      color: #231942;
     }
   }
 `;

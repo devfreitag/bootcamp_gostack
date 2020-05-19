@@ -40,8 +40,9 @@ export const Form = styled.form<FormProps>`
     padding: 0 24px;
     border: 0;
     border-radius: 5px 0px 0px 5px;
-    color: #3a3a3a;
-    border: 2px solid #fff;
+    background: #5e548e;
+    color: #fff;
+    border: 2px solid #5e548e;
     border-right: 0;
 
     ${(props) =>
@@ -58,7 +59,7 @@ export const Form = styled.form<FormProps>`
   button {
     width: 210px;
     height: 70px;
-    background: #5e548e;
+    background: #9d79bc;
     border-radius: 0px 5px 5px 0;
     border: 0;
     color: #fff;

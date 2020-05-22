@@ -13,3 +13,6 @@
 [submodule "levelTwo/challenges/desafio_database_upload"]
 	path = levelTwo/challenges/desafio_database_upload
 	url = https://github.com/alexxfreitag/desafio_database_upload
+[submodule "levelThree/challenges/desafio_fundamentos_reactjs"]
+	path = levelThree/challenges/desafio_fundamentos_reactjs
+	url = https://github.com/alexxfreitag/desafio_fundamentos_reactjs

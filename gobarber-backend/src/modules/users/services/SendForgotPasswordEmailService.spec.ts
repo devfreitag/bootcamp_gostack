@@ -27,4 +27,20 @@ describe('SendForgotPasswordEmail', () => {
 
     expect(sendMailFunction).toHaveBeenCalled();
   });
+
+  it('should not be able to recover a non-existing user password', async () => {
+    const fakeUsersRepository = new FakeUsersRepository();
+    const fakeMailProvider = new FakeMailProvider();
+
+    const sendForgotPasswordEmail = new SendForgotPasswordEmailService(
+      fakeUsersRepository,
+      fakeMailProvider,
+    );
+
+    await expect(
+      sendForgotPasswordEmail.execute({
+        email: 'john@email.com',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
 });

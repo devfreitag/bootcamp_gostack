@@ -13,11 +13,12 @@ export const Container = styled.div<ContainerProps>`
   border-radius: 10px;
   padding: 16px;
   width: 100%;
-  display: flex;
-  align-items: center;
 
   border: 2px solid #232129;
   color: #666360;
+
+  display: flex;
+  align-items: center;
 
   & + div {
     margin-top: 8px;
@@ -33,7 +34,7 @@ export const Container = styled.div<ContainerProps>`
     props.isFocused &&
     css`
       color: #ff9000;
-      border-color: #ff9900;
+      border-color: #ff9000;
     `}
 
   ${(props) =>
@@ -41,8 +42,6 @@ export const Container = styled.div<ContainerProps>`
     css`
       color: #ff9000;
     `}
-
-
 
   input {
     flex: 1;

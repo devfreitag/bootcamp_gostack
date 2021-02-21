@@ -1,10 +1,11 @@
 import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
-import signUpBackgroundImage from '../../assets/sign-up-background.png';
+import signUpBackgroundImg from '../../assets/sign-up-background.png';
 
 export const Container = styled.div`
   height: 100vh;
+
   display: flex;
   align-items: stretch;
 `;
@@ -14,6 +15,7 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   width: 100%;
   max-width: 700px;
 `;
@@ -65,6 +67,7 @@ export const AnimationContainer = styled.div`
     margin-top: 24px;
     text-decoration: none;
     transition: color 0.2s;
+
     display: flex;
     align-items: center;
 
@@ -80,6 +83,6 @@ export const AnimationContainer = styled.div`
 
 export const Background = styled.div`
   flex: 1;
-  background: url(${signUpBackgroundImage}) no-repeat center;
+  background: url(${signUpBackgroundImg}) no-repeat center;
   background-size: cover;
 `;

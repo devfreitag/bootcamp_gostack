@@ -5,7 +5,7 @@ import ToastContainer from '../components/ToastContainer';
 
 export interface ToastMessage {
   id: string;
-  type?: 'sucess' | 'error' | 'info';
+  type?: 'success' | 'error' | 'info';
   title: string;
   description?: string;
 }
@@ -17,7 +17,7 @@ interface ToastContextData {
 
 const ToastContext = createContext<ToastContextData>({} as ToastContextData);
 
-export const ToastProvider: React.FC = ({ children }) => {
+const ToastProvider: React.FC = ({ children }) => {
   const [messages, setMessages] = useState<ToastMessage[]>([]);
 
   const addToast = useCallback(
@@ -48,12 +48,14 @@ export const ToastProvider: React.FC = ({ children }) => {
   );
 };
 
-export function useToast(): ToastContextData {
+function useToast(): ToastContextData {
   const context = useContext(ToastContext);
 
   if (!context) {
-    throw new Error('useToast must be used within an ToastProvider');
+    throw new Error('useToast must be used within a ToastProvider');
   }
 
   return context;
 }
+
+export { ToastProvider, useToast };

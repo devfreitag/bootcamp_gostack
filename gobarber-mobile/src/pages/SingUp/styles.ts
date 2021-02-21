@@ -25,6 +25,7 @@ export const BackToSignIn = styled.TouchableOpacity`
   border-top-width: 1px;
   border-color: #232129;
   padding: 16px 0 ${16 + getBottomSpace()}px;
+
   justify-content: center;
   align-items: center;
   flex-direction: row;

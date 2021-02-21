@@ -1,6 +1,5 @@
 import React, { useRef, useCallback } from 'react';
 import {
-  Image,
   View,
   ScrollView,
   KeyboardAvoidingView,
@@ -8,12 +7,12 @@ import {
   TextInput,
   Alert,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
+import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
 
 import getValidationErrors from '../../utils/getValidationErrors';
@@ -21,25 +20,28 @@ import getValidationErrors from '../../utils/getValidationErrors';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-import logoImg from '../../assets/logo.png';
+import { Container, Title, Avatar } from './styles';
 
-import { Container, Title, BackToSignIn, BackToSignInText } from './styles';
-
-interface SignUpFormData {
+interface ProfileFormData {
   name: string;
   email: string;
   password: string;
+  old_password: string;
+  password_confirmation: string;
 }
 
-const SignUp: React.FC = () => {
+const Profile: React.FC = () => {
+  const { user, updateUser } = useAuth();
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
 
   const emailInputRef = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
+  const newPasswordInputRef = useRef<TextInput>(null);
+  const confirmPasswordInputRef = useRef<TextInput>(null);
 
-  const handleSignUp = useCallback(
-    async (data: SignUpFormData) => {
+  const handleSaveProfile = useCallback(
+    async (data: ProfileFormData) => {
       try {
         formRef.current?.setErrors({});
 
@@ -48,21 +50,45 @@ const SignUp: React.FC = () => {
           email: Yup.string()
             .required('E-mail obrigatório')
             .email('Digite um e-mail válido'),
-          password: Yup.string().min(6, 'No mínimo 6 dígitos'),
+          old_password: Yup.string(),
+          password: Yup.string().when('old_password', {
+            is: (val) => !!val.length,
+            then: Yup.string().required('Campo obrigatório'),
+            otherwise: Yup.string(),
+          }),
+          password_confirmation: Yup.string()
+            .when('old_password', {
+              is: (val) => !!val.length,
+              then: Yup.string().required('Campo obrigatório'),
+              otherwise: Yup.string(),
+            })
+            .oneOf([Yup.ref('password'), null], 'Confirmação incorreta'),
         });
 
         await schema.validate(data, {
           abortEarly: false,
         });
 
-        await api.post('/users', data);
+        const formData = {
+          email: data.email,
+          name: data.name,
+          ...(data.old_password
+            ? {
+                old_password: data.old_password,
+                password: data.password,
+                password_confirmation: data.password_confirmation,
+              }
+            : null),
+        };
+
+        const response = await api.put('/profile', formData);
+
+        updateUser(response.data);
 
         Alert.alert(
-          'Cadastro realizado com sucesso!',
-          'Você já pode fazer login na aplicação.',
+          'Perfil atualizado com sucesso!',
+          'As informações do perfil foram atualizadas.',
         );
-
-        navigation.goBack();
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -78,7 +104,7 @@ const SignUp: React.FC = () => {
         );
       }
     },
-    [navigation],
+    [updateUser],
   );
 
   return (
@@ -93,13 +119,13 @@ const SignUp: React.FC = () => {
           contentContainerStyle={{ flex: 1 }}
         >
           <Container>
-            <Image source={logoImg} />
+            <Avatar source={{ uri: user.avatar_url }} />
 
             <View>
-              <Title>Crie sua conta</Title>
+              <Title>Atualizar perfil</Title>
             </View>
 
-            <Form ref={formRef} onSubmit={handleSignUp}>
+            <Form initialData={user} ref={formRef} onSubmit={handleSaveProfile}>
               <Input
                 autoCapitalize="words"
                 name="name"
@@ -126,30 +152,48 @@ const SignUp: React.FC = () => {
               />
 
               <Input
+                containerStyle={{ marginTop: 16 }}
                 ref={passwordInputRef}
+                secureTextEntry
+                name="old_password"
+                icon="lock"
+                placeholder="Senha atual"
+                textContentType="newPassword"
+                returnKeyType="next"
+                onSubmitEditing={() => newPasswordInputRef.current?.focus()}
+              />
+
+              <Input
+                ref={newPasswordInputRef}
                 secureTextEntry
                 name="password"
                 icon="lock"
-                placeholder="Senha"
+                placeholder="Nova senha"
+                textContentType="newPassword"
+                returnKeyType="next"
+                onSubmitEditing={() => confirmPasswordInputRef.current?.focus()}
+              />
+
+              <Input
+                ref={confirmPasswordInputRef}
+                secureTextEntry
+                name="password_confirmation"
+                icon="lock"
+                placeholder="Confirmar senha"
                 textContentType="newPassword"
                 returnKeyType="send"
                 onSubmitEditing={() => formRef.current?.submitForm()}
               />
 
               <Button onPress={() => formRef.current?.submitForm()}>
-                Criar
+                Confirmar mudanças
               </Button>
             </Form>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
-
-      <BackToSignIn onPress={() => navigation.goBack()}>
-        <Icon name="arrow-left" size={20} color="#fff" />
-        <BackToSignInText>Voltar para logon</BackToSignInText>
-      </BackToSignIn>
     </>
   );
 };
 
-export default SignUp;
+export default Profile;

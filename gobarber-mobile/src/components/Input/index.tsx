@@ -1,7 +1,7 @@
 import React, {
   useState,
-  useEffect,
   useCallback,
+  useEffect,
   useRef,
   useImperativeHandle,
   forwardRef,
@@ -14,6 +14,7 @@ import { Container, TextInput, Icon } from './styles';
 interface InputProps extends TextInputProps {
   name: string;
   icon: string;
+  containerStyle?: object;
 }
 
 interface InputValueReference {
@@ -25,7 +26,7 @@ interface InputRef {
 }
 
 const Input: React.RefForwardingComponent<InputRef, InputProps> = (
-  { name, icon, ...rest },
+  { name, icon, containerStyle = {}, ...rest },
   ref,
 ) => {
   const inputElementRef = useRef<any>(null);
@@ -42,8 +43,13 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
 
   const handleInputBlur = useCallback(() => {
     setIsFocused(false);
+
     setIsFilled(!!inputValueRef.current.value);
   }, []);
+
+  useEffect(() => {
+    inputValueRef.current.value = defaultValue;
+  }, [defaultValue]);
 
   useImperativeHandle(ref, () => ({
     focus() {
@@ -56,11 +62,11 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
       name: fieldName,
       ref: inputValueRef.current,
       path: 'value',
-      setValue(value) {
+      setValue(ref: any, value: string) {
         inputValueRef.current.value = value;
         inputElementRef.current.setNativeProps({ text: value });
       },
-      clearValue() {
+      clearValue(ref: any) {
         inputValueRef.current.value = '';
         inputElementRef.current.clear();
       },
@@ -68,12 +74,13 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
   }, [fieldName, registerField]);
 
   return (
-    <Container isFocused={isFocused} isErrored={!!error}>
+    <Container style={containerStyle} isFocused={isFocused} isErrored={!!error}>
       <Icon
         name={icon}
         size={20}
         color={isFocused || isFilled ? '#ff9000' : '#666360'}
       />
+
       <TextInput
         ref={inputElementRef}
         keyboardAppearance="dark"
